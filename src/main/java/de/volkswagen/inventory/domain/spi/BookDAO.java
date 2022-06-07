@@ -1,25 +1,34 @@
 package de.volkswagen.inventory.domain.spi;
 
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.springframework.data.annotation.Id;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Book")
 public class BookDAO {
 
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
+//@GeneratedValue
 private long id;
-private String ISBN;
+private String isbn;
 private String genre;
 private String title;
 private String author;
 
+public BookDAO() {
+	
+}
+
 public BookDAO(String ISBN, String genre, String title, String author) {
-    this.ISBN = ISBN;
+    this.isbn = ISBN;
     this.genre = genre;
     this.title = title;
     this.author = author;
@@ -34,11 +43,11 @@ public void setId(long id) {
 }
 
 public String getISBN() {
-    return ISBN;
+    return isbn;
 }
 
 public void setISBN(String ISBN) {
-    this.ISBN = ISBN;
+    this.isbn = ISBN;
 }
 
 public String getGenre() {

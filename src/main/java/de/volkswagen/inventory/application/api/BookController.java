@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.volkswagen.inventory.domain.model.Book;
@@ -23,8 +24,8 @@ public class BookController {
 		return bookService.getAllBooks().stream().map(b -> new BookDTO(b.getISBN(),b.getGenre(),b.getTitle(),b.getAuthor())).collect(Collectors.toList());
 	}
 	
-	@GetMapping("/bookByIsbn")
-	public BookDTO getBookByIsbn(String isbn) {
+	@GetMapping("/book/isbn/{isbn}")
+	public BookDTO getBookByIsbn(@PathVariable("isbn") String isbn) {
 		Book book = bookService.findByIsbn(isbn);
 		BookDTO bookDto = new BookDTO(book.getISBN(), book.getGenre(), book.getTitle(), book.getAuthor());
 		return bookDto;

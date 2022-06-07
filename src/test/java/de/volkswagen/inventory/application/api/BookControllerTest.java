@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import de.volkswagen.inventory.domain.model.Book;
 import de.volkswagen.inventory.domain.service.BookService;
@@ -49,4 +51,6 @@ public class BookControllerTest {
 		Assertions.assertEquals(bookController.getBookByIsbn(bookList.get(0).getISBN()).getGenre(), bookList.get(0).getGenre());
 		Assertions.assertEquals(bookController.getBookByIsbn(bookList.get(0).getISBN()).getTitle(), bookList.get(0).getTitle());
 	}
+	
+
 }
